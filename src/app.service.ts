@@ -9,4 +9,8 @@ export class AppService {
   getGoodbye(): string {
     return 'Goodbye';
   }
+
+  getId(id: string): string {
+    return `Id: ${id}`;
+  }
 }
