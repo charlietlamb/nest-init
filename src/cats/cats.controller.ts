@@ -1,7 +1,8 @@
-import { Controller, Param } from '@nestjs/common';
+import { Controller, Body } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Get, Post } from '@nestjs/common';
-import { Cat } from './cats.schema';
+import { CreateCatDto } from './dto/create-cat.dto';
+import { Cat } from 'src/schema/cats.schema';
 
 @Controller('api/cats')
 export class CatsController {
@@ -12,9 +13,8 @@ export class CatsController {
     return await this.catService.getCats();
   }
 
-  @Post(':name')
-  async addCat(@Param('name') name: string) {
-    await this.catService.addCat(name);
-    return name;
+  @Post()
+  async addCat(@Body() createCatDto: CreateCatDto) {
+    return await this.catService.addCat(createCatDto);
   }
 }

@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Cat } from './cats.schema';
+import { Cat } from 'src/schema/cats.schema';
 import { Model } from 'mongoose';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Injectable()
 export class CatsService {
   constructor(@InjectModel(Cat.name) private catModel: Model<Cat>) {}
 
-  async addCat(name: string): Promise<Cat> {
-    const cat = new Cat(name);
-    const createdCat = new this.catModel(cat);
+  async addCat(createCatDto: CreateCatDto): Promise<Cat> {
+    const createdCat = new this.catModel(createCatDto);
     return await createdCat.save();
   }
 
