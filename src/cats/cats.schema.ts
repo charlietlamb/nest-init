@@ -5,6 +5,9 @@ export type CatDocument = HydratedDocument<Cat>;
 
 @Schema()
 export class Cat {
+  constructor(name: string) {
+    this.name = name;
+  }
   @Prop()
   name: string;
 }
