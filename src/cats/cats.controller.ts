@@ -4,7 +4,7 @@ import { Get, Post } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from 'src/schema/cats.schema';
 
-@Controller('api/cats')
+@Controller('cats')
 export class CatsController {
   constructor(private readonly catService: CatsService) {}
 
@@ -14,7 +14,7 @@ export class CatsController {
   }
 
   @Post()
-  async addCat(@Body() createCatDto: CreateCatDto) {
+  async addCat(@Body() createCatDto: CreateCatDto): Promise<Cat> {
     return await this.catService.addCat(createCatDto);
   }
 }

@@ -5,13 +5,13 @@ export type CatDocument = HydratedDocument<Cat>;
 
 @Schema()
 export class Cat {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   age: number;
 
-  @Prop()
+  @Prop({ required: true })
   breed: string;
 }
 

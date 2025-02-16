@@ -13,7 +13,7 @@ export class CatsService {
     return await createdCat.save();
   }
 
-  getCats(): Promise<Cat[]> {
-    return this.catModel.find().exec();
+  async getCats(): Promise<Cat[]> {
+    return await this.catModel.find().exec();
   }
 }
